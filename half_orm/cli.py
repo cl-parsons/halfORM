@@ -35,12 +35,9 @@ _trust_extensions = False
 
 # Liste des extensions officielles
 OFFICIAL_EXTENSIONS = {
-    'half-orm-test-extension',
-    'half-orm-inspect',
-    'half-orm-dev', 
-    # À ajouter au fur et à mesure
-    # 'half-orm-api',
-    # 'half-orm-admin',
+    'half_orm_test_extension',
+    'half_orm_inspect',
+    'half_orm_dev',
 }
 
 def get_config_file():
@@ -136,7 +133,7 @@ def warn_unofficial_extension(package_name, current_version):
     # Skip warning if global trust mode or already trusted
     if (_trust_extensions or 
         is_trusted_extension(package_name, current_version) or
-        is_official_extension(package_name)):
+        is_official_extension(package_name.replace('-', '_'))):
         return
     
     click.echo(f"⚠️  WARNING: '{package_name}' v{current_version} is not official", err=True)
@@ -185,7 +182,10 @@ def discover_extensions() -> Dict[str, Any]:
     for dist in distributions():
         try:
             package_name = get_distribution_name(dist)
-            if not package_name or not package_name.startswith('half-orm-'):
+            if not package_name or not (
+                package_name.startswith('half-orm-') or
+                package_name.startswith('half_orm_')
+            ):
                 continue
 
             # Get extension version
