@@ -1,3 +1,12 @@
+# 0.16.1 (2025-08-18)
+
+* cli: use _ in package_name (0de9904)
+* docs: fix lists and code inside code. (70bcf48)
+* tests: fix test_discover_extensions_version_incompatible. (bf6bbf1)
+* test: temporarily skip test_discover_extensions_version_incompatible (98c3518)
+* build: add flake8 linting to test target (f039242)
+* fix(flake8): Remove global _trust_extension from cli.warn_unofficial_extension (e0e99e1)
+
 # 0.16.0 (2025-07-05)
 
 ## Added
