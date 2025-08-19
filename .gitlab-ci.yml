@@ -22,7 +22,7 @@ variables:
     - su - postgres -c "createdb hop_test -O halftest"
     - su - postgres -c "psql halftest -f $CI_PROJECT_DIR/test/sql/halftest.sql"
     - /usr/local/bin/python -m pip install --upgrade pip
-    - pip install virtualenv
+    - pip install virtualenv pytest psycopg2
     - virtualenv venv
     - source venv/bin/activate
     - pip install .
@@ -43,7 +43,6 @@ test:
     matrix:
       - PYVERSION: ["3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
   script:
-    - "$CI_PROJECT_DIR/half_orm/packager/test/dummy_test.sh"
     - pytest
   artifacts:
     paths:
