@@ -8,7 +8,7 @@
 
 The `hop` tool distinguishes between two environment modes: development and production. It offers a Git-based workflow for the development and deployment of your `half_orm` projects.
 
-<img title="hop workflow" alt="hop workflow" src="https://github.com/collorg/halfORM/blob/main/doc/hop_workflow.png" style="width: 70%">
+<img title="hop workflow" alt="hop workflow" src="https://github.com/half-orm/half-orm/blob/main/doc/hop_workflow.png" style="width: 70%">
 
 ## Initializing a `hop` project
 
@@ -58,7 +58,7 @@ Before validating a new release with `hop release`, the tool automatically runs 
 
 ## Additional resources
 
-- [Test examples](https://github.com/collorg/halfORM/blob/main/half_orm/packager/test/dummy_test.sh) for the `hop` command
-- [TODO] [Complete documentation](https://github.com/collorg/halfORM/blob/main/doc/hop_full_doc.md) for the `hop` tool
+- [Test examples](https://github.com/half-orm/half-orm/blob/main/half_orm/packager/test/dummy_test.sh) for the `hop` command
+- [TODO] [Complete documentation](https://github.com/half-orm/half-orm/blob/main/doc/hop_full_doc.md) for the `hop` tool
 
 With `hop`, you benefit from a powerful tool to manage the full lifecycle of your `half_orm` projects, following modern development best practices such as continuous integration, automated testing, and continuous deployment.

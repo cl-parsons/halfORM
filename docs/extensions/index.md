@@ -50,11 +50,11 @@ half_orm --untrust my-extension
 
 #### half-orm-test-extension
 **Purpose**: Demonstration and testing of the extension system  
-**Repository**: [collorg/half-orm-test-extension](https://github.com/collorg/half-orm-test-extension)
+**Repository**: [half-orm/half-orm-test-extension](https://github.com/half-orm/half-orm-test-extension)
 
 ```bash
 # Installation
-pip install git+https://github.com/collorg/half-orm-test-extension
+pip install git+https://github.com/half-orm/half-orm-test-extension
 
 # Usage
 half_orm test-extension greet --name "World"
@@ -124,7 +124,7 @@ def add_commands(main_group):
 - **Security model**: Official extensions trusted, community extensions require approval
 - **Version compatibility**: Must match halfORM core major.minor version
 
-For a complete working example, see [half-orm-test-extension](https://github.com/collorg/half-orm-test-extension) which demonstrates all the essential patterns.
+For a complete working example, see [half-orm-test-extension](https://github.com/half-orm/half-orm-test-extension) which demonstrates all the essential patterns.
 
 ## Development Resources
 
@@ -134,9 +134,9 @@ For a complete working example, see [half-orm-test-extension](https://github.com
 
 ## Community and Support
 
-- **[GitHub Discussions](https://github.com/collorg/halfORM/discussions)** - Ask questions, share ideas
-- **[GitHub Issues](https://github.com/collorg/halfORM/issues)** - Report bugs, request features
-- **[Extension Ideas](https://github.com/collorg/halfORM/discussions/categories/ideas)** - Propose new extensions
+- **[GitHub Discussions](https://github.com/half-orm/half-orm/discussions)** - Ask questions, share ideas
+- **[GitHub Issues](https://github.com/half-orm/half-orm/issues)** - Report bugs, request features
+- **[Extension Ideas](https://github.com/half-orm/half-orm/discussions/categories/ideas)** - Propose new extensions
 
 ---
 

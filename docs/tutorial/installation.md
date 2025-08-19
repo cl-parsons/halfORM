@@ -51,7 +51,7 @@ If you want to contribute or use the latest features:
 
 ```bash
 # Clone the repository
-git clone https://github.com/collorg/halfORM.git
+git clone https://github.com/half-orm/half-orm.git
 cd halfORM
 
 # Install in development mode
@@ -150,7 +150,7 @@ Test the new extension system:
 
 ```bash
 # Install test extension
-pip install git+https://github.com/collorg/half-orm-test-extension
+pip install git+https://github.com/half-orm/half-orm-test-extension
 
 # List extensions
 half_orm --list-extensions
@@ -220,8 +220,8 @@ If you're still having issues:
 1. **Check PostgreSQL status**: `sudo systemctl status postgresql`
 2. **Test manual connection**: `psql template1`
 3. **Verify installation**: `half_orm version`
-4. **Search existing issues**: [GitHub Issues](https://github.com/collorg/halfORM/issues)
-5. **Ask for help**: [GitHub Discussions](https://github.com/collorg/halfORM/discussions)
+4. **Search existing issues**: [GitHub Issues](https://github.com/half-orm/half-orm/issues)
+5. **Ask for help**: [GitHub Discussions](https://github.com/half-orm/half-orm/discussions)
 
 ### Debug Information
 

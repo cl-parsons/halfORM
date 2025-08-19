@@ -19,7 +19,7 @@ def print_help():
     print("  python -m half_orm blog_tutorial      # Show blog_tutorial structure")
     print("  python -m half_orm blog_tutorial blog.author  # Show author table details")
     print()
-    print("Documentation: https://collorg.github.io/halfORM/")
+    print("Documentation: https://half-orm.github.io/half-orm/")
 
 def check_peer_authentication():
     try:
@@ -47,7 +47,7 @@ def check_databases_access():
     except FileNotFoundError:
         sys.stderr.write(f"❌ '{CONF_DIR}' does not exist.\nChange HALFORM_CONF_DIR variable\n")
     sys.stderr.flush()
-    print(f"\nCheck the documentation on https://collorg.github.io/halfORM/tutorial/installation/#database-configuration-optional")
+    print(f"\nCheck the documentation on https://half-orm.github.io/half-orm/tutorial/installation/#database-configuration-optional")
 
 def show_version():
     print(f"[halfORM] version {half_orm.__version__}")

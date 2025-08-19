@@ -24,7 +24,7 @@ half_orm example status                   # Shows extension information
 ```
 
 !!! note "Real Example Available"
-    For a complete working example, see [half-orm-test-extension](https://github.com/collorg/half-orm-test-extension) which demonstrates all these concepts in production.
+    For a complete working example, see [half-orm-test-extension](https://github.com/half-orm/half-orm-test-extension) which demonstrates all these concepts in production.
 
 ## Project Setup
 

@@ -477,9 +477,9 @@ This instant API example shows halfORM's potential for rapid API development. Th
 
 ### 📞 **Get Involved**
 
-- **[GitHub Discussions](https://github.com/collorg/halfORM/discussions)** - Share ideas and collaborate
-- **[Issues](https://github.com/collorg/halfORM/issues)** - Report bugs or request features
-- **[Examples Repository](https://github.com/collorg/halfORM-examples)** - Contribute real-world examples
+- **[GitHub Discussions](https://github.com/half-orm/half-orm/discussions)** - Share ideas and collaborate
+- **[Issues](https://github.com/half-orm/half-orm/issues)** - Report bugs or request features
+- **[Examples Repository](https://github.com/half-orm/half-orm-examples)** - Contribute real-world examples
 - **Blog posts** - Write about your halfORM API experiences
 
 **The halfORM community thrives on practical, database-first solutions. Your contributions can help others build amazing APIs with minimal code!**
@@ -499,7 +499,7 @@ The few lines mentioned at the beginning can power a secure API foundation that'
 
 ## Get Started
 
-1. **Download the example**: [instant_api.py](https://github.com/collorg/halfORM/blob/main/examples/instant-rest-api/instant_api.py)
+1. **Download the example**: [instant_api.py](https://github.com/half-orm/half-orm/blob/main/examples/instant-rest-api/instant_api.py)
 
 2. **Discover your database structure**:
    ```bash
@@ -538,7 +538,7 @@ The few lines mentioned at the beginning truly can power a secure, production-re
 
 ## Get Started
 
-1. **Download the complete code**: [instant_api.py](https://github.com/collorg/halfORM/blob/main/examples/instant-rest-api/instant_api.py)
+1. **Download the complete code**: [instant_api.py](https://github.com/half-orm/half-orm/blob/main/examples/instant-rest-api/instant_api.py)
 2. **Create your configuration** to expose only what you need
 3. **Test with your database**: `python instant_api.py your_database_name`
 4. **Deploy safely** knowing write operations are disabled by design

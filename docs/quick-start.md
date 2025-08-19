@@ -303,7 +303,7 @@ halfORM 0.16 introduces an extensible architecture. Try it with the test extensi
 
 ```bash
 # Install test extension
-pip install git+https://github.com/collorg/half-orm-test-extension
+pip install git+https://github.com/half-orm/half-orm-test-extension
 
 # List available extensions
 half_orm --list-extensions
@@ -377,8 +377,8 @@ except Exception as e:
 - Ensure user has necessary permissions
 
 !!! question "Need Help?"
-    - [GitHub Discussions](https://github.com/collorg/halfORM/discussions)
-    - [GitHub Issues](https://github.com/collorg/halfORM/issues)
+    - [GitHub Discussions](https://github.com/half-orm/half-orm/discussions)
+    - [GitHub Issues](https://github.com/half-orm/half-orm/issues)
 
 ---
 

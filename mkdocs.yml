@@ -1,9 +1,9 @@
 site_name: halfORM Documentation
 site_description: A simple PostgreSQL to Python mapper
-site_author: collorg
-site_url: https://collorg.github.io/halfORM/
-repo_url: https://github.com/collorg/halfORM
-repo_name: collorg/halfORM
+site_author: half-orm
+site_url: https://half-orm.github.io/
+repo_url: https://github.com/half-orm/half-orm
+repo_name: half-orm/half-orm
 
 theme:
   name: material
@@ -78,8 +78,8 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.magiclink:
       repo_url_shorthand: true
-      user: collorg
-      repo: halfORM
+      user: half-orm
+      repo: half-orm
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences:
@@ -99,7 +99,7 @@ extra:
     default: latest
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/collorg/halfORM
+      link: https://github.com/half-orm/half-orm
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/half-orm/
 

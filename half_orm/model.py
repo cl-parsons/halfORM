@@ -48,7 +48,7 @@ class Model:
         config_file (str): the configuration file that contains the informations to connect
             to the database.
         scope (Optional[str]): used to agregate several modules in a package.
-            See `hop <https://github.com/collorg/halfORM/blob/main/doc/hop.md>`_.
+            See `hop <https://github.com/half-orm/half-orm/blob/main/doc/hop.md>`_.
 
     Note:
         The **config_file** is searched in the `HALFORM_CONF_DIR` variable if specified,

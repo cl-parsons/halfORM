@@ -4,8 +4,8 @@
 [![Python versions](https://img.shields.io/badge/Python-%20≥%203.7-blue)](https://www.python.org)
 [![PostgreSQL versions](https://img.shields.io/badge/PostgreSQL-%20≥%209.6-blue)](https://www.postgresql.org)
 [![License](https://img.shields.io/pypi/l/half_orm?color=green)](https://pypi.org/project/half-orm/)
-[![Tests](https://github.com/collorg/halfORM/actions/workflows/python-package.yml/badge.svg)](https://github.com/collorg/halfORM/actions/workflows/python-package.yml)
-[![Coverage](https://coveralls.io/repos/github/collorg/halfORM/badge.svg?branch=main)](https://coveralls.io/github/collorg/halfORM?branch=main)
+[![Tests](https://github.com/half-orm/half-orm/actions/workflows/python-package.yml/badge.svg)](https://github.com/half-orm/half-orm/actions/workflows/python-package.yml)
+[![Coverage](https://coveralls.io/repos/github/half-orm/half-orm/badge.svg?branch=main)](https://coveralls.io/github/half-orm/half-orm?branch=main)
 [![Downloads](https://static.pepy.tech/badge/half_orm)](https://pepy.tech/project/half_orm)
 
 **The PostgreSQL-native ORM that stays out of your way**
@@ -288,20 +288,20 @@ print(f"Comments: {post.comments_rfk().ho_count()}")
 
 ## 📚 Documentation (WIP)
 
-**[📖 Complete Documentation](https://collorg.github.io/halfORM/)** - Full documentation site 🚧
+**[📖 Complete Documentation](https://half-orm.github.io/half-orm/)** - Full documentation site 🚧
 
 ### Quick Links
 
-- **[🚀 Quick Start](https://collorg.github.io/halfORM/quick-start/)** - Get running in 5 minutes
-- **[🎓 Tutorial](https://collorg.github.io/halfORM/tutorial/)** - Step-by-step learning path *(WIP)*
-- **[📋 API Reference](https://collorg.github.io/halfORM/api/)** - Complete method documentation *(WIP)*
+- **[🚀 Quick Start](https://half-orm.github.io/half-orm/quick-start/)** - Get running in 5 minutes
+- **[🎓 Tutorial](https://half-orm.github.io/half-orm/tutorial/)** - Step-by-step learning path *(WIP)*
+- **[📋 API Reference](https://half-orm.github.io/half-orm/api/)** - Complete method documentation *(WIP)*
 
 ## 🤝 Contributing
 
 We welcome contributions! halfORM is designed to stay simple and focused.
 
-- **[Issues](https://github.com/collorg/halfORM/issues)** - Bug reports and feature requests
-- **[Discussions](https://github.com/collorg/halfORM/discussions)** - Questions and community
+- **[Issues](https://github.com/half-orm/half-orm/issues)** - Bug reports and feature requests
+- **[Discussions](https://github.com/half-orm/half-orm/discussions)** - Questions and community
 - **[Contributing Guide](CONTRIBUTING.md)** - How to contribute code
 
 ## 📈 Status & Roadmap

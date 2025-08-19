@@ -6,17 +6,17 @@ This directory contains the documentation for halfORM, built with MkDocs and sup
 
 The documentation supports multiple versions:
 
-- **Latest stable** (`latest`): Current stable release (e.g., 0.16.0)
+- **Latest stable** (`latest`): Current stable release (e.g., 0.16.1)
 - **Development** (`dev`): Development version from main branch
 - **Release candidates** (`0.16.0-rc1`, etc.): Pre-release versions
 - **Historical versions** (`0.15.0`, `0.14.0`, etc.): Previous releases
 
 ### URL Structure
 
-- `https://collorg.github.io/halfORM/` - Redirects to latest stable
-- `https://collorg.github.io/halfORM/latest/` - Latest stable version
-- `https://collorg.github.io/halfORM/dev/` - Development version
-- `https://collorg.github.io/halfORM/0.15.0/` - Specific version
+- `https://half-orm.github.io/half-orm/` - Redirects to latest stable
+- `https://half-orm.github.io/half-orm/latest/` - Latest stable version
+- `https://half-orm.github.io/half-orm/dev/` - Development version
+- `https://half-orm.github.io/half-orm/0.15.0/` - Specific version
 
 ## Local Development
 

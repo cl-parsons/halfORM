@@ -2,13 +2,13 @@
 
 !!! info "Documentation Version"
     This documentation covers halfORM **0.16.x** (latest development release).
-    For older versions, see the [GitHub releases](https://github.com/collorg/halfORM/releases).
+    For older versions, see the [GitHub releases](https://github.com/half-orm/half-orm/releases).
 
 [![PyPI version](https://img.shields.io/pypi/v/half_orm)](https://pypi.org/project/half-orm/)
 [![Python versions](https://img.shields.io/badge/Python-%20≥%203.7-blue)](https://www.python.org)
 [![PostgreSQL versions](https://img.shields.io/badge/PostgreSQL-%20≥%209.6-blue)](https://www.postgresql.org)
 [![License](https://img.shields.io/pypi/l/half_orm?color=green)](https://pypi.org/project/half-orm/)
-[![Tests](https://github.com/collorg/halfORM/actions/workflows/python-package.yml/badge.svg)](https://github.com/collorg/halfORM/actions/workflows/python-package.yml)
+[![Tests](https://github.com/half-orm/half-orm/actions/workflows/python-package.yml/badge.svg)](https://github.com/half-orm/half-orm/actions/workflows/python-package.yml)
 
 **The PostgreSQL-native ORM with unified tooling**
 
@@ -41,7 +41,7 @@ half_orm inspect my_database public.users
 half_orm --list-extensions
 
 # Test the extension architecture
-pip install git+https://github.com/collorg/half-orm-test-extension
+pip install git+https://github.com/half-orm/half-orm-test-extension
 half_orm test-extension greet
 ```
 
@@ -51,7 +51,7 @@ Extensions are automatically discovered and integrated:
 
 ```bash
 # Install test extension
-pip install git+https://github.com/collorg/half-orm-test-extension
+pip install git+https://github.com/half-orm/half-orm-test-extension
 
 # Commands become available immediately
 half_orm --list-extensions  # Shows installed extensions
@@ -201,7 +201,7 @@ Get up and running in under 5 minutes:
 Demonstration extension for testing the architecture:
 
 ```bash
-pip install git+https://github.com/collorg/half-orm-test-extension
+pip install git+https://github.com/half-orm/half-orm-test-extension
 half_orm test-extension greet     # Hello, halfORM!
 half_orm test-extension status    # Extension status
 ```
@@ -210,7 +210,7 @@ half_orm test-extension status    # Extension status
 
 The following extensions are in development or planned:
 
-- **half-orm-dev** - Development tools (based on [halfORM_dev](https://github.com/collorg/halfORM_dev))
+- **half-orm-dev** - Development tools (based on [halfORM_dev](https://github.com/half-orm/halfORM_dev))
 - **half-orm-api** - REST API generation 
 - **half-orm-admin** - Admin interface generation
 - **half-orm-monitoring** - Observability and monitoring tools
@@ -307,8 +307,8 @@ The following extensions are in development or planned:
 
 ## Community & Support
 
-- **[GitHub Repository](https://github.com/collorg/halfORM)** - Source code and issue tracking
-- **[Discussions](https://github.com/collorg/halfORM/discussions)** - Community Q&A and ideas
+- **[GitHub Repository](https://github.com/half-orm/half-orm)** - Source code and issue tracking
+- **[Discussions](https://github.com/half-orm/half-orm/discussions)** - Community Q&A and ideas
 - **[PyPI Package](https://pypi.org/project/half-orm/)** - Official releases
 
 ## Version History

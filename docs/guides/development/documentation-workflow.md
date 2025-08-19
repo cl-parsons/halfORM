@@ -24,7 +24,7 @@ The documentation deployment follows the same branch structure as code developme
 ## URL Structure
 
 ```
-https://collorg.github.io/halfORM/
+https://half-orm.github.io/half-orm/
 ├── /                   # → Redirects to latest stable version
 ├── /latest/           # → Current stable version (alias)
 ├── /0.16.0/          # → Specific stable version

@@ -2,7 +2,7 @@ name: Documentation
 
 on:
   push:
-    branches: [ main, 'release/*', 'dev/*' ]
+    branches: [ main, 'release/*', 'dev/*', 'doc' ]
     tags: [ 'v*' ]
   pull_request:
     branches: [ main ]

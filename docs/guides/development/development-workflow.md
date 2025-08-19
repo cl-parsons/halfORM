@@ -306,7 +306,7 @@ Breaking changes:
 - Development tools moved to half-orm-dev package
 - CLI commands restructured under unified interface
 
-Migration guide: https://collorg.github.io/halfORM/guides/migration/"
+Migration guide: https://half-orm.github.io/half-orm/guides/migration/"
 
 # Push tag
 git push origin v0.16.0
@@ -534,7 +534,7 @@ git push origin v0.16.0
 
 ```bash
 # Clone repository
-git clone https://github.com/collorg/halfORM.git
+git clone https://github.com/half-orm/half-orm.git
 cd halfORM
 
 # Install in development mode

@@ -116,7 +116,7 @@ If you get stuck:
 
 - Check the [Fundamentals](../fundamentals.md#faq) if you haven't already
 - Browse [Examples](../examples/index.md) for patterns
-- Ask in [GitHub Discussions](https://github.com/collorg/halfORM/discussions)
+- Ask in [GitHub Discussions](https://github.com/half-orm/half-orm/discussions)
 
 ## Tutorial Philosophy
 
@@ -132,4 +132,4 @@ This tutorial follows halfORM's core principles:
 **Ready to start?** Let's begin with [Chapter 1: Installation](installation.md)!
 
 !!! note "Tutorial Feedback"
-    This tutorial is actively maintained. If you find errors, have suggestions, or want to contribute examples, please [open an issue](https://github.com/collorg/halfORM/issues) or [start a discussion](https://github.com/collorg/halfORM/discussions).
+    This tutorial is actively maintained. If you find errors, have suggestions, or want to contribute examples, please [open an issue](https://github.com/half-orm/half-orm/issues) or [start a discussion](https://github.com/half-orm/half-orm/discussions).
