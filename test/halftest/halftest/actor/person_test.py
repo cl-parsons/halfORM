@@ -3,7 +3,7 @@
 
 from halftest.base_test import BaseTest
 from halftest.actor.person import Person
-#>>> PLACE YOUR CODE BELLOW THIS LINE. DO NOT REMOVE THIS LINE!
+#>>> PLACE YOUR CODE BELOW THIS LINE. DO NOT REMOVE THIS LINE!
 
 
 #<<< PLACE YOUR CODE ABOVE THIS LINE. DO NOT REMOVE THIS LINE!
@@ -18,4 +18,4 @@ class Test(BaseTest):
         "Person should be a subclass of half_orm.Relation."
         self.assertTrue(issubclass(Person, self.Relation))
 
-    #>>> PLACE YOUR CODE BELLOW THIS LINE. DO NOT REMOVE THIS LINE!
+    #>>> PLACE YOUR CODE BELOW THIS LINE. DO NOT REMOVE THIS LINE!

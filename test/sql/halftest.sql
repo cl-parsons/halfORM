@@ -2,12 +2,13 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 13.11 (Debian 13.11-1.pgdg110+1)
--- Dumped by pg_dump version 13.11 (Debian 13.11-1.pgdg110+1)
+-- Dumped from database version 17.5 (Ubuntu 17.5-0ubuntu0.25.04.1)
+-- Dumped by pg_dump version 17.5 (Ubuntu 17.5-0ubuntu0.25.04.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -56,20 +57,6 @@ CREATE SCHEMA "half_orm_meta.view";
 --
 
 CREATE SCHEMA "meta.view";
-
-
---
--- Name: plpython3u; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS plpython3u WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpython3u; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION plpython3u IS 'PL/Python3U untrusted procedural language';
 
 
 --
@@ -142,7 +129,7 @@ $_$;
 -- Name: insert_data(integer, integer); Type: PROCEDURE; Schema: public; Owner: -
 --
 
-CREATE PROCEDURE public.insert_data(a integer, b integer)
+CREATE PROCEDURE public.insert_data(IN a integer, IN b integer)
     LANGUAGE sql
     AS $$
 INSERT INTO tbl VALUES (a);
@@ -191,7 +178,7 @@ SET default_table_access_method = heap;
 CREATE TABLE actor.person (
     id integer DEFAULT nextval('actor.id_person'::regclass) NOT NULL,
     first_name text NOT NULL,
-    last_name text UNIQUE NOT NULL,
+    last_name text NOT NULL,
     birth_date date NOT NULL
 );
 
@@ -225,7 +212,7 @@ CREATE TABLE blog.comment (
     post_id integer,
     author_id integer,
     "a = 1" text,
-    tags _text
+    tags text[]
 );
 
 
@@ -333,7 +320,10 @@ CREATE TABLE half_orm_meta.database (
 -- Name: TABLE database; Type: COMMENT; Schema: half_orm_meta; Owner: -
 --
 
-COMMENT ON TABLE half_orm_meta.database IS 'id identifies the database in the cluster. It uses the key in hop_key.';
+COMMENT ON TABLE half_orm_meta.database IS '
+id identifies the database in the cluster. It uses the key
+in hop_key.
+';
 
 
 --
@@ -382,17 +372,17 @@ CREATE TABLE half_orm_meta.hop_release_issue (
 --
 
 CREATE VIEW "half_orm_meta.view".hop_last_release AS
- SELECT hop_release.major,
-    hop_release.minor,
-    hop_release.patch,
-    hop_release.pre_release,
-    hop_release.pre_release_num,
-    hop_release.date,
-    hop_release."time",
-    hop_release.changelog,
-    hop_release.commit
+ SELECT major,
+    minor,
+    patch,
+    pre_release,
+    pre_release_num,
+    date,
+    "time",
+    changelog,
+    commit
    FROM half_orm_meta.hop_release
-  ORDER BY hop_release.major DESC, hop_release.minor DESC, hop_release.patch DESC, hop_release.pre_release DESC, hop_release.pre_release_num DESC
+  ORDER BY major DESC, minor DESC, patch DESC, pre_release DESC, pre_release_num DESC
  LIMIT 1;
 
 
@@ -401,17 +391,155 @@ CREATE VIEW "half_orm_meta.view".hop_last_release AS
 --
 
 CREATE VIEW "half_orm_meta.view".hop_penultimate_release AS
- SELECT penultimate.major,
-    penultimate.minor,
-    penultimate.patch
+ SELECT major,
+    minor,
+    patch
    FROM ( SELECT hop_release.major,
             hop_release.minor,
             hop_release.patch
            FROM half_orm_meta.hop_release
           ORDER BY hop_release.major DESC, hop_release.minor DESC, hop_release.patch DESC
          LIMIT 2) penultimate
-  ORDER BY penultimate.major, penultimate.minor, penultimate.patch
+  ORDER BY major, minor, patch
  LIMIT 1;
+
+
+--
+-- Data for Name: person; Type: TABLE DATA; Schema: actor; Owner: -
+--
+
+COPY actor.person (id, first_name, last_name, birth_date) FROM stdin;
+461	ba	ba	2025-09-05
+462	ba	bb	2025-09-05
+463	ba	bc	2025-09-05
+464	ba	bd	2025-09-05
+465	ba	be	2025-09-05
+466	ba	bf	2025-09-05
+467	ba	bg	2025-09-05
+468	ba	bh	2025-09-05
+469	ba	bi	2025-09-05
+470	ba	bj	2025-09-05
+471	ca	ca	2025-09-05
+472	ca	cb	2025-09-05
+473	ca	cc	2025-09-05
+474	ca	cd	2025-09-05
+475	ca	ce	2025-09-05
+476	ca	cf	2025-09-05
+477	ca	cg	2025-09-05
+478	ca	ch	2025-09-05
+479	ca	ci	2025-09-05
+480	ca	cj	2025-09-05
+481	da	da	2025-09-05
+482	da	db	2025-09-05
+483	da	dc	2025-09-05
+484	da	dd	2025-09-05
+485	da	de	2025-09-05
+486	da	df	2025-09-05
+487	da	dg	2025-09-05
+488	da	dh	2025-09-05
+489	da	di	2025-09-05
+490	da	dj	2025-09-05
+491	ea	ea	2025-09-05
+492	ea	eb	2025-09-05
+493	ea	ec	2025-09-05
+494	ea	ed	2025-09-05
+495	ea	ee	2025-09-05
+496	ea	ef	2025-09-05
+497	ea	eg	2025-09-05
+498	ea	eh	2025-09-05
+499	ea	ei	2025-09-05
+500	ea	ej	2025-09-05
+501	fa	fa	2025-09-05
+502	fa	fb	2025-09-05
+503	fa	fc	2025-09-05
+504	fa	fd	2025-09-05
+505	fa	fe	2025-09-05
+506	fa	ff	2025-09-05
+507	fa	fg	2025-09-05
+508	fa	fh	2025-09-05
+509	fa	fi	2025-09-05
+510	fa	fj	2025-09-05
+451	aa	aa	2025-09-05
+452	aa	ab	2025-09-05
+453	aa	ac	2025-09-05
+454	aa	ad	2025-09-05
+455	aa	ae	2025-09-05
+456	aa	af	2025-09-05
+457	aa	ag	2025-09-05
+458	aa	ah	2025-09-05
+459	aa	ai	2025-09-05
+460	aa	aj	2025-09-05
+\.
+
+
+--
+-- Data for Name: comment; Type: TABLE DATA; Schema: blog; Owner: -
+--
+
+COPY blog.comment (id, content, post_id, author_id, "a = 1", tags) FROM stdin;
+\.
+
+
+--
+-- Data for Name: event; Type: TABLE DATA; Schema: blog; Owner: -
+--
+
+COPY blog.event (id, title, content, author_first_name, author_last_name, author_birth_date, data, begin, "end", location) FROM stdin;
+\.
+
+
+--
+-- Data for Name: post; Type: TABLE DATA; Schema: blog; Owner: -
+--
+
+COPY blog.post (id, title, content, author_first_name, author_last_name, author_birth_date, data) FROM stdin;
+\.
+
+
+--
+-- Data for Name: database; Type: TABLE DATA; Schema: half_orm_meta; Owner: -
+--
+
+COPY half_orm_meta.database (id, name, description) FROM stdin;
+\.
+
+
+--
+-- Data for Name: hop_release; Type: TABLE DATA; Schema: half_orm_meta; Owner: -
+--
+
+COPY half_orm_meta.hop_release (major, minor, patch, pre_release, pre_release_num, date, "time", changelog, commit, dbid, hop_release) FROM stdin;
+0	0	0			2025-09-05	10:14:13+02	Initial release	\N	\N	\N
+\.
+
+
+--
+-- Data for Name: hop_release_issue; Type: TABLE DATA; Schema: half_orm_meta; Owner: -
+--
+
+COPY half_orm_meta.hop_release_issue (num, issue_release, release_major, release_minor, release_patch, release_pre_release, release_pre_release_num, changelog) FROM stdin;
+\.
+
+
+--
+-- Name: id_person; Type: SEQUENCE SET; Schema: actor; Owner: -
+--
+
+SELECT pg_catalog.setval('actor.id_person', 555, true);
+
+
+--
+-- Name: id_comment; Type: SEQUENCE SET; Schema: blog; Owner: -
+--
+
+SELECT pg_catalog.setval('blog.id_comment', 211, true);
+
+
+--
+-- Name: post_id; Type: SEQUENCE SET; Schema: blog; Owner: -
+--
+
+SELECT pg_catalog.setval('blog.post_id', 174, true);
 
 
 --
@@ -420,6 +548,14 @@ CREATE VIEW "half_orm_meta.view".hop_penultimate_release AS
 
 ALTER TABLE ONLY actor.person
     ADD CONSTRAINT person_id_key UNIQUE (id);
+
+
+--
+-- Name: person person_last_name_key; Type: CONSTRAINT; Schema: actor; Owner: -
+--
+
+ALTER TABLE ONLY actor.person
+    ADD CONSTRAINT person_last_name_key UNIQUE (last_name);
 
 
 --

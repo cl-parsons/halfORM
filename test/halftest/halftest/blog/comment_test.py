@@ -3,7 +3,7 @@
 
 from halftest.base_test import BaseTest
 from halftest.blog.comment import Comment
-#>>> PLACE YOUR CODE BELLOW THIS LINE. DO NOT REMOVE THIS LINE!
+#>>> PLACE YOUR CODE BELOW THIS LINE. DO NOT REMOVE THIS LINE!
 
 
 #<<< PLACE YOUR CODE ABOVE THIS LINE. DO NOT REMOVE THIS LINE!
@@ -18,4 +18,4 @@ class Test(BaseTest):
         "Comment should be a subclass of half_orm.Relation."
         self.assertTrue(issubclass(Comment, self.Relation))
 
-    #>>> PLACE YOUR CODE BELLOW THIS LINE. DO NOT REMOVE THIS LINE!
+    #>>> PLACE YOUR CODE BELOW THIS LINE. DO NOT REMOVE THIS LINE!

@@ -44,7 +44,7 @@ setup(
 
     author='',
     author_email='',
-    license='MIT',
+    license='',
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
@@ -75,7 +75,7 @@ setup(
     packages=find_packages(exclude=['contrib', 'docs', 'tests', 'patches', 'svg']),
 
     install_requires=[
-        'half_orm==0.9.2'
+        'half_orm==0.16.1'
     ],
 
 )

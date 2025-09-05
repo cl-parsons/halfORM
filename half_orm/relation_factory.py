@@ -15,7 +15,7 @@ def register_class(relation_class):
             return relation_class
         model = relation_class._ho_model
         dbname = model._dbname
-        schemaname, relationname = relation_class._qrn.replace('"', '').split('.')
+        schemaname, relationname = relation_class._qrn.replace('"', '').rsplit('.', 1)
         key = (dbname, schemaname, relationname)
         model._classes_[dbname][key] = relation_class
         relation_class._rels_ids[rel_id] = key
@@ -68,8 +68,10 @@ def factory(dct):
         if metadata['inherits']:
             metadata['inherits'].sort()
             bases = []
-        for parent_fqrn in metadata['inherits']:
-            bases.append(factory({'fqrn': parent_fqrn, 'model': model}))
+            for parent_fqrn in metadata['inherits']:
+                parent_qtn = f"{parent_fqrn[1]}.{parent_fqrn[2]}"
+                parent_class = model._import_class(parent_qtn)
+                bases.append(parent_class)
         tbl_attr['_ho_metadata'] = metadata
         tbl_attr['_t_fqrn'] = dct['fqrn']
         tbl_attr['_fqrn'] = pg_meta.normalize_fqrn(dct['fqrn'])

@@ -1,5 +1,7 @@
 [halfORM]
 config_file = halftest
 package_name = halftest
-hop_version = 0.1.0a0
+hop_version = 0.16.0-a1
+git_origin = 
 devel = True
+
