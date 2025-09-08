@@ -213,7 +213,7 @@ class Model:
                 self.execute_query("select 1")
             except (psycopg2.OperationalError, psycopg2.InterfaceError) as exc: #pragma: no cover
                 # log reconnection attempt failure
-                sys.stderr.write(f'{exc.exception}\n')
+                sys.stderr.write(f'{exc}\n')
                 sys.stderr.flush()
             return False
 
