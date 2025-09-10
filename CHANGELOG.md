@@ -1,3 +1,11 @@
+# 0.16.2 (2025-09-10)
+
+* feat: Add direct command support to CLI extension system (c9ee263)
+* fix: inherit from registered classes in PostgreSQL table inheritance (1638f89)
+* ci: gitlab fix missing dependency (59a3da8)
+* ci: remove dummy_test for gitlab. (569f208)
+* docs: collorg/halfORM -> half-orm/half-orm (eb2a764)
+
 # 0.16.1 (2025-08-18)
 
 * cli: use _ in package_name (0de9904)
