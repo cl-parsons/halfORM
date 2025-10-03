@@ -1,3 +1,7 @@
+# 0.16.3 (2025-03-11)
+
+* feat(cli): add debug mode for extension errors (16f668d)
+
 # 0.16.2 (2025-09-10)
 
 * feat: Add direct command support to CLI extension system (c9ee263)
