@@ -12,13 +12,15 @@ Usage:
     half_orm inspect database               # Inspect database
 """
 
-import sys
 import importlib
 import json
+import os
+import sys
+import traceback
+
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, Any, Optional
-import click
 
 # Modern import to replace pkg_resources
 try:
@@ -27,7 +29,12 @@ except ImportError:
     # Fallback for Python < 3.8
     from importlib_metadata import distributions, version
 
+import click
+
 import half_orm
+from half_orm import utils
+
+DEBUG_EXTENSIONS = os.environ.get('HALF_ORM_DEBUG_EXTENSIONS', '').lower() in ('1', 'true', 'yes')
 
 # Global cache for extensions
 _cached_extensions = None
@@ -361,14 +368,15 @@ def register_extensions():
             ext_data['module'].add_commands(main)
         except Exception as e:
             display_name = ext_data['display_name']
-            click.echo(f"Warning: Failed to register {display_name}: {e}", err=True)
+            click.echo(utils.error(f"Warning: Failed to register {display_name}: {e}"), err=True)
+            if DEBUG_EXTENSIONS:
+                click.echo(traceback.format_exc(), err=True)
+            else:
+                click.echo(f"Use `{utils.Color.bold('HALF_ORM_DEBUG_EXTENSIONS=1')} half_orm ...` to display the complete traceback.\n")
             continue
 
 # Auto-register extensions when module is imported
-try:
-    register_extensions()
-except Exception as e:
-    click.echo(f"Warning: Extension discovery failed: {e}", err=True)
+register_extensions()
 
 if __name__ == '__main__':
     main()
