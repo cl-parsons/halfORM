@@ -1,3 +1,10 @@
+# 0.16.4 (2025-06-11)
+
+* docs(relation): add type hints to DC_Relation protocol methods (17f8448)
+* feat(cli): add error handling wrapper for extension commands (20737e0)
+* fix: ho_limit(0) was returning all the lines in the relation. (b7f2a05)
+* tests: add PostgreSQL 18. (93e44b8)
+
 # 0.16.3 (2025-03-11)
 
 * feat(cli): add debug mode for extension errors (16f668d)
