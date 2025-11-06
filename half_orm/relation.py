@@ -797,7 +797,7 @@ Fkeys = {"""
 
     def ho_limit(self, _limit_):
         """Set limit for the next SQL select request."""
-        if _limit_:
+        if _limit_ is not None:
             self._ho_select_params['limit'] = int(_limit_)
         elif 'limit' in self._ho_select_params:
             self._ho_select_params.pop('limit')
@@ -805,7 +805,10 @@ Fkeys = {"""
 
     def ho_offset(self, _offset_):
         """Set the offset for the next SQL select request."""
-        self._ho_select_params['offset'] = int(_offset_)
+        if _offset_ is not None:
+            self._ho_select_params['offset'] = int(_offset_)
+        elif 'offset' in self._ho_select_params:
+            self._ho_select_params.pop('offset')
         return self
 
     def ho_mogrify(self):

@@ -89,6 +89,8 @@ class Test(TestCase):
         posts.ho_limit(1)
         self.assertEqual(len(list(posts)), 1)
         posts.ho_limit(0)
+        self.assertEqual(len(list(posts)), 0)
+        posts.ho_limit(None)
         self.assertEqual(len(list(posts)), halftest.post_cls().ho_count())
 
     def test_ho_limit_error(self):
