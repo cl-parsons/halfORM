@@ -173,22 +173,22 @@ class DC_Relation: # pragma: no cover
         """
         ...
 
-    def ho_is_set(self):
+    def ho_is_set(self) -> bool:
         """Return True if one field at least is set or if self has been
         constrained by at least one of its foreign keys or self is the
         result of a combination of Relations (using set operators).
         """
         ...
 
-    def ho_distinct(self):
+    def ho_distinct(self) -> 'Relation':
         """Set distinct for the SQL request."""
         ...
 
-    def ho_unaccent(self, *fields_names):
+    def ho_unaccent(self, *fields_names) -> 'Relation':
         "Sets unaccent for each field listed in fields_names"
         ...
 
-    def ho_order_by(self, _order_):
+    def ho_order_by(self, _order_) -> 'Relation':
         """Sets the SQL `order by` according to the "_order_" string passed
 
         Example :
@@ -196,20 +196,20 @@ class DC_Relation: # pragma: no cover
         """
         ...
 
-    def ho_limit(self, _limit_):
+    def ho_limit(self, _limit_) -> 'Relation':
         """Sets the limit for the next SQL select request."""
         ...
 
-    def ho_offset(self, _offset_):
+    def ho_offset(self, _offset_) -> 'Relation':
         """Set the offset for the next SQL select request."""
         ...
 
-    def ho_count(self, limit=0):
+    def ho_count(self, limit=0) -> int:
         """Returns the number of tuples matching the intention in the relation.
         """
         ...
 
-    def ho_is_empty(self):
+    def ho_is_empty(self) -> bool:
         """Returns True if the self is an empty set, False otherwise.
         """
         ...
