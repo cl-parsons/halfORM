@@ -12,6 +12,7 @@ Usage:
     half_orm inspect database               # Inspect database
 """
 
+import functools
 import importlib
 import json
 import os
@@ -137,9 +138,9 @@ def remove_trusted_extension(package_name):
     return False
 
 def warn_unofficial_extension(package_name, current_version):
-    """Show warning for non-official extensions."""    
+    """Show warning for non-official extensions."""
     # Skip warning if global trust mode or already trusted
-    if (_trust_extensions or 
+    if (_trust_extensions or
         is_trusted_extension(package_name, current_version) or
         is_official_extension(package_name.replace('-', '_'))):
         return
@@ -245,7 +246,7 @@ def discover_extensions() -> Dict[str, Any]:
                 click.echo(f"Warning: Could not load official extension {package_name}: {exc}", err=True)
             continue
         except Exception as exc:
-            # Only show other errors if in debug mode or for official extensions  
+            # Only show other errors if in debug mode or for official extensions
             if is_official_extension(package_name):
                 click.echo(f"Warning: Error loading official extension {package_name}: {exc}", err=True)
             continue
@@ -359,13 +360,44 @@ def version():
         click.echo("\nNo extensions installed")
         click.echo("Try: pip install half-orm-inspect")
 
+def safe_command_wrapper(func):
+    """Wrap command to catch and display exceptions with full traceback."""
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except click.ClickException:
+            # Re-raise Click exceptions (already handled)
+            raise
+        except Exception as e:
+            # Catch unexpected errors and show traceback
+            click.secho(f"\nUnexpected error: {e}", fg='red', err=True)
+            click.secho("\nFull traceback:", fg='yellow', err=True)
+            click.echo(traceback.format_exc(), err=True)
+            raise click.ClickException(str(e))
+    return wrapper
+
 def register_extensions():
     """Discover and register all halfORM extensions."""
     extensions = discover_extensions()
 
     for ext_key, ext_data in extensions.items():
         try:
-            ext_data['module'].add_commands(main)
+            # Create a temporary group to capture commands
+            temp_group = click.Group()
+
+            # Let extension add its commands to temp group
+            ext_data['module'].add_commands(temp_group)
+
+            # Wrap each command and add to main CLI
+            for name, command in temp_group.commands.items():
+                # Wrap the command callback with safe error handling
+                if hasattr(command, 'callback') and command.callback:
+                    command.callback = safe_command_wrapper(command.callback)
+
+                # Add wrapped command to main CLI
+                main.add_command(command, name=name)
+
         except Exception as e:
             display_name = ext_data['display_name']
             click.echo(utils.error(f"Warning: Failed to register {display_name}: {e}"), err=True)
