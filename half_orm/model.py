@@ -66,6 +66,7 @@ class Model:
     """
     __deja_vu = {}
     _classes_ = {}
+    __sql_trace = False
     def __init__(self, config_file: None, scope: str=None):
         """Model constructor
 
@@ -276,7 +277,7 @@ class Model:
         """
         cursor = self.__conn.cursor(cursor_factory=RealDictCursor)
         try:
-            if mogrify:
+            if mogrify or self.sql_trace:
                 print(cursor.mogrify(query, values).decode('utf-8'))
             cursor.execute(query, values)
         except (psycopg2.OperationalError, psycopg2.InterfaceError):
@@ -418,3 +419,14 @@ class Model:
             class_name = pg_meta.camel_case(relation[1][-1])
             module = importlib.import_module(f".{module_name}", package_name)
             yield getattr(module, class_name), relation[0]
+
+    @property
+    def sql_trace(self) -> bool:
+        return self.__sql_trace
+    @sql_trace.setter
+    def sql_trace(self, value: bool) -> None:
+        """Sets the value of self.__sql_trace
+
+        If True, all sql queries are displayed on stdout.
+        """
+        self.__sql_trace = value

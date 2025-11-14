@@ -120,3 +120,60 @@ def check_attribute_name(string: str):
     if iskeyword(string):
         err = f'"{string}" is a reserved keyword in Python.'
     return err
+
+def get_caller_info(skip_frames=2):
+    """Extract caller information for SQL trace.
+
+    This function finds the first caller outside of the half_orm package
+    to show where the SQL query was actually triggered in user code.
+
+    Args:
+        skip_frames: Minimum number of frames to skip in the stack (default: 2)
+                    The function will skip at least this many frames, then
+                    continue until it finds a frame outside of half_orm.
+
+    Returns:
+        dict: Contains 'filename', 'lineno', 'function', 'code_context'
+              or None if no caller info is available
+    """
+    try:
+        stack = inspect.stack()
+        if len(stack) <= skip_frames:
+            return None
+
+        # Find the first frame outside of half_orm
+        for i in range(skip_frames, len(stack)):
+            frame = stack[i]
+            frame_info = inspect.getframeinfo(frame[0])
+
+            # Skip frames that are inside half_orm package
+            if 'half_orm' in frame_info.filename and '/half_orm/' in frame_info.filename:
+                continue
+
+            # Found a frame outside half_orm
+            code_line = ''
+            if frame_info.code_context:
+                code_line = frame_info.code_context[0].strip()
+
+            return {
+                'filename': frame_info.filename,
+                'lineno': frame_info.lineno,
+                'function': frame_info.function,
+                'code_context': code_line
+            }
+
+        # If no external frame found, return the frame at skip_frames position
+        caller_frame = stack[skip_frames]
+        frame_info = inspect.getframeinfo(caller_frame[0])
+        code_line = ''
+        if frame_info.code_context:
+            code_line = frame_info.code_context[0].strip()
+
+        return {
+            'filename': frame_info.filename,
+            'lineno': frame_info.lineno,
+            'function': frame_info.function,
+            'code_context': code_line
+        }
+    except Exception:
+        return None

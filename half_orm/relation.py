@@ -40,7 +40,7 @@ import inspect
 from dataclasses import dataclass
 from functools import wraps
 from collections import OrderedDict
-from typing import List, Generic, TypeVar, Dict
+from typing import List, Generic, TypeVar, Dict, Optional
 from keyword import iskeyword
 import psycopg2
 from psycopg2.extras import RealDictCursor
@@ -125,14 +125,15 @@ class DC_Relation: # pragma: no cover
         """
         ...
 
-    def ho_update(self, *args, update_all=False, **kwargs) -> [Dict]:
+    def ho_update(self, *args, update_all=False, **kwargs) -> Optional[Dict]:
         """Updates the elements defined by self.
 
         Arguments:
+            *args [Optional]: the list of columns names to return in the dictionary list for the updated elements.
+                If args is ('*', ), returns all the columns values otherwise None.
             **kwargs: the values to be updated {[field name:value]}
-            *args [Optional]: the list of columns names to return in the dictionary list for the updated elements. If args is ('*', ), returns all the columns values.
             update_all: a boolean that must be set to True if there is no constraint on
-            self. Defaults to False.
+                self. Defaults to False.
         """
         ...
 
@@ -487,6 +488,13 @@ class Relation:
 
     #@utils.trace
     def __execute(self, query, values):
+        if self._ho_model.sql_trace:
+            caller_info = utils.get_caller_info(skip_frames=2)
+            if caller_info:
+                print(f"\n{utils.Color.blue('SQL TRACE')}:")
+                print(f"  File: {caller_info['filename']}:{caller_info['lineno']}")
+                print(f"  Function: {caller_info['function']}")
+                print(f"  Code: {caller_info['code_context']}")
         return self._ho_model.execute_query(query, values, self._ho_mogrify)
 
     @property
@@ -857,7 +865,7 @@ Fkeys = {"""
         fk_values = []
         for fkey in self._ho_fkeys.values():
             fk_prep_select = fkey._fkey_prep_select()
-            if fk_prep_select is not None:
+            if fk_prep_select is not None and len(fkey.values()) and len(fk_prep_select):
                 fk_values += list(fkey.values()[0])
                 fk_fields += fk_prep_select[0]
                 fk_queries = ["%s" for _ in range(len(fk_values))]
