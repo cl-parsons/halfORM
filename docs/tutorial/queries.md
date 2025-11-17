@@ -280,6 +280,63 @@ end = time.time()
 print(f"Query executed in {end - start:.3f} seconds")
 ```
 
+### SQL Trace Mode
+
+For comprehensive debugging during development and testing, you can enable SQL trace mode to automatically display all executed queries along with their caller context:
+
+```python
+from half_orm.model import Model
+
+blog = Model('halftest')
+
+# Enable SQL trace mode
+blog.sql_trace = True
+
+# Now all queries will show:
+# 1. Where they were called from (file, line, function)
+# 2. The actual SQL query executed
+
+Person = blog.get_relation_class('actor.person')
+Post = blog.get_relation_class('blog.post')
+
+# This will automatically print trace information
+person = Person(last_name='aa')
+results = list(person)
+```
+
+**Output:**
+```
+SQL TRACE:
+  File: tmp/test_sql_trace.py:17
+  Function: <module>
+  Code: results = list(person)
+select
+  r136347531037616.*
+from
+   "actor"."person" as r136347531037616
+  
+where
+    (r136347531037616."last_name" = 'aa'::text)
+```
+
+**Benefits:**
+- Automatically tracks all SQL queries without manual instrumentation
+- Shows exact code location that triggered each query
+- Particularly useful for:
+  - Test debugging - identify unexpected queries
+  - Performance analysis - see query patterns
+  - Learning - understand halfORM's SQL generation
+
+**Disable when done:**
+```python
+blog.sql_trace = False
+```
+
+!!! tip "ho_mogrify() vs sql_trace"
+    - Use `ho_mogrify()` to inspect a **specific** query before execution
+    - Use `sql_trace = True` to monitor **all** queries automatically with caller context
+    - Combine both for maximum debugging insight during development
+
 ### Minimizing Database Calls
 
 ```python

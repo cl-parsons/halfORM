@@ -216,6 +216,22 @@ count = Person().ho_count()
 is_empty = Person(email='nonexistent@example.com').ho_is_empty()
 ```
 
+### SQL Trace Mode
+```python
+# Enable SQL trace to see queries with caller context
+db.sql_trace = True
+
+# Now every query shows where it was called from
+person = Person(last_name='Smith').ho_get()
+# Output shows:
+# SQL TRACE:
+#   Called from: script.py:42
+#   SELECT * FROM person WHERE last_name = 'Smith'
+
+# Useful for debugging complex applications
+db.sql_trace = False  # Disable when done
+```
+
 ## 🏗️ Real-World Example
 
 ```python
