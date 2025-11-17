@@ -1,3 +1,8 @@
+# 0.17.0 (2025-17-11)
+
+* docs: add model.sql_trace documentation. (5a483e8)
+* feat(trace): add SQL trace mode with caller context (5499a57)
+
 # 0.16.4 (2025-06-11)
 
 * docs(relation): add type hints to DC_Relation protocol methods (17f8448)
