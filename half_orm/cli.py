@@ -37,6 +37,47 @@ from half_orm import utils
 
 DEBUG_EXTENSIONS = os.environ.get('HALF_ORM_DEBUG_EXTENSIONS', '').lower() in ('1', 'true', 'yes')
 
+
+class CustomGroup(click.Group):
+    """Custom Click Group that provides better error messages for unknown commands."""
+
+    def resolve_command(self, ctx, args):
+        """Override to show available commands when command not found."""
+        try:
+            return super().resolve_command(ctx, args)
+        except click.UsageError as e:
+            # Check if this is a "No such command" error
+            if 'No such command' in str(e):
+                cmd_name = args[0] if args else 'unknown'
+
+                # Get available commands
+                available = sorted(self.list_commands(ctx))
+
+                if not available:
+                    # No commands available, re-raise original error
+                    raise
+
+                # Build custom error message
+                message = f"\n❌ No such command '{cmd_name}'.\n"
+                message += f"\n{utils.Color.bold('Available commands:')}\n"
+
+                for available_cmd_name in available:
+                    cmd = self.get_command(ctx, available_cmd_name)
+                    if cmd:
+                        help_text = cmd.help or cmd.short_help or ""
+                        first_line = help_text.split('\n')[0] if help_text else ""
+                        message += f"  • {utils.Color.bold(available_cmd_name)}: {first_line}\n"
+
+                # Add usage hint
+                full_path = ctx.command_path
+                message += f"\nTry {utils.Color.bold(f'{full_path} <command> --help')} for more information.\n"
+
+                # Raise new UsageError with custom message
+                raise click.UsageError(message, ctx=ctx) from e
+            else:
+                # Re-raise other UsageErrors as-is
+                raise
+
 # Global cache for extensions
 _cached_extensions = None
 _trust_extensions = False
@@ -286,7 +327,11 @@ def get_extension_info(extensions: Dict[str, Any]) -> str:
 
     return "\n".join(info)
 
-@click.group(context_settings={'help_option_names': ['-h', '--help']}, invoke_without_command=True)
+@click.group(
+    cls=CustomGroup,
+    context_settings={'help_option_names': ['-h', '--help']},
+    invoke_without_command=True
+)
 @click.version_option(version=half_orm.__version__, prog_name='halfORM')
 @click.option('--list-extensions', is_flag=True, help='List all installed extensions')
 @click.option('--untrust', metavar='EXTENSION', help='Remove extension from trusted list')
