@@ -1,3 +1,9 @@
+# 0.17.1 (2025-18-12)
+
+* feat(cli): improve error messages for unknown commands (16d6575)
+* build(deps-dev): bump filelock from 3.16.1 to 3.20.1 (ff5155a)
+* build(deps-dev): bump urllib3 from 2.5.0 to 2.6.0 (3b40923)
+
 # 0.17.0 (2025-17-11)
 
 * docs: add model.sql_trace documentation. (5a483e8)
