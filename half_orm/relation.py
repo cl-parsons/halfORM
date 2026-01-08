@@ -1072,6 +1072,7 @@ def transaction(fct):
         Pers().insert_many([{...}, {...}])
 
     """
+    @wraps(fct)
     def wrapper(self, *args, **kwargs):
         with Transaction(self._ho_model):
             return fct(self, *args, **kwargs)
