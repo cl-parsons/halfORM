@@ -1,3 +1,8 @@
+# 0.17.2 (2026-08-01)
+
+* feat: use functools.wraps in relation.transaction decorator. (3986912)
+* build(deps-dev): bump urllib3 from 2.6.0 to 2.6.3 (a974ebf)
+
 # 0.17.1 (2025-18-12)
 
 * feat(cli): improve error messages for unknown commands (16d6575)
