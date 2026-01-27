@@ -74,7 +74,7 @@ class Model:
         reserved to the __factory metaclass.
         """
         self._dbinfo = {}
-        self.__production_mode = True
+        self._production_mode = True
         self.__load_config(config_file)
         self._scope = scope and scope.split('.')[0]
         self.__conn = None
@@ -117,7 +117,7 @@ class Model:
         self._dbinfo['host'] = database.get('host')
         self._dbinfo['port'] = database.get('port')
         self._dbinfo['connect_timeout'] = database.get('timeout', 3)
-        self.__production_mode = database.get('devel', False)
+        self._production_mode = database.get('devel', False)
 
     def __connect(self, config_file: str=None, reload: bool=False):
         """Setup a new connection to the database.
@@ -286,7 +286,7 @@ class Model:
             cursor.execute(query, values)
         except Exception as exc:
             vals = ''
-            if not self.__production_mode:
+            if not self._production_mode:
                 # report values only in development mode
                 vals = f"values: {values}\n"
             utils.error(f"Query execution failed:\nquery: {query}\n{vals}")
