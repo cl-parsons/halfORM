@@ -1,3 +1,11 @@
+# 0.17.3 (2026-27-01)
+
+* 3f66994 2026-01-27 | rename.Model.__production_mode to Model._production_mode. [Joël Maizi]
+* 3a92e4a 2026-01-27 | rename Model.__dbinfo to Model._dbinfo. [Joël Maizi]
+* 203ca12 2026-01-14 | build(deps-dev): bump jaraco.context from 5.3.0 to 6.1.0 (gite/main, gite/HEAD) [dependabot[bot]]
+* 4095cb8 2026-01-13 | build(deps-dev): bump virtualenv from 20.26.6 to 20.36.1 [dependabot[bot]]
+* 60b83f1 2026-01-08 | ci: add Python 3.14 [Joël Maizi]
+
 # 0.17.2 (2026-08-01)
 
 * feat: use functools.wraps in relation.transaction decorator. (3986912)
