@@ -1,3 +1,7 @@
+# 0.17.4 (2026-27-01)
+
+* 1a157ae 2026-01-27 | fix: production mode is set with production key (not devel) [Joël Maizi]
+
 # 0.17.3 (2026-27-01)
 
 * 3f66994 2026-01-27 | rename.Model.__production_mode to Model._production_mode. [Joël Maizi]
