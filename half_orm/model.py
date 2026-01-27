@@ -73,7 +73,7 @@ class Model:
         Use @config_file in your scripts. The @dbname parameter is
         reserved to the __factory metaclass.
         """
-        self.__dbinfo = {}
+        self._dbinfo = {}
         self.__production_mode = True
         self.__load_config(config_file)
         self._scope = scope and scope.split('.')[0]
@@ -101,22 +101,22 @@ class Model:
             except KeyError as exc:
                 raise model_errors.MalformedConfigFile(file_, 'Missing mandatory parameter', 'name') from exc
 
-            if self.__dbinfo and dbname != self.__dbname:
+            if self._dbinfo and dbname != self.__dbname:
                 raise RuntimeError(
                     f"Can't reconnect to another database: {dbname} != {self.__dbname}")
-            self.__dbinfo['dbname'] = dbname
+            self._dbinfo['dbname'] = dbname
 
         else:
             dbname = config_file
-            self.__dbinfo['dbname'] = dbname
+            self._dbinfo['dbname'] = dbname
             # WARNING: use peer authentication only in development environment
             database = {'user': None, 'password': None, 'host': None, 'port': None, 'devel': True}
 
-        self.__dbinfo['user'] = database.get('user')
-        self.__dbinfo['password'] = database.get('password')
-        self.__dbinfo['host'] = database.get('host')
-        self.__dbinfo['port'] = database.get('port')
-        self.__dbinfo['connect_timeout'] = database.get('timeout', 3)
+        self._dbinfo['user'] = database.get('user')
+        self._dbinfo['password'] = database.get('password')
+        self._dbinfo['host'] = database.get('host')
+        self._dbinfo['port'] = database.get('port')
+        self._dbinfo['connect_timeout'] = database.get('timeout', 3)
         self.__production_mode = database.get('devel', False)
 
     def __connect(self, config_file: str=None, reload: bool=False):
@@ -134,7 +134,7 @@ class Model:
 
         if config_file:
             self.__load_config(config_file)
-        self.__conn = psycopg2.connect(**self.__dbinfo, cursor_factory=RealDictCursor)
+        self.__conn = psycopg2.connect(**self._dbinfo, cursor_factory=RealDictCursor)
         self.__conn.autocommit = True
         self.__pg_meta = pg_meta.PgMeta(self.__conn, reload)
         if reload:
@@ -196,7 +196,7 @@ class Model:
 
     @property
     def __dbname(self):
-        return self.__dbinfo['dbname']
+        return self._dbinfo['dbname']
 
     def ping(self):
         """Checks if the connection is still established.
