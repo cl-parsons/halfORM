@@ -118,6 +118,8 @@ class Model:
         self._dbinfo['port'] = database.get('port')
         self._dbinfo['connect_timeout'] = database.get('timeout', 3)
         self._production_mode = database.get('production', False)
+        if self._production_mode == 'False': # production = False
+            self._production_mode = False
 
     def __connect(self, config_file: str=None, reload: bool=False):
         """Setup a new connection to the database.
