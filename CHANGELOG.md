@@ -1,14 +1,18 @@
+# 0.17.5 (2026-30-01)
+
+* fix: [half-orm-dev] check False string in connection file for production param. (e8a967f)
+
 # 0.17.4 (2026-27-01)
 
-* 1a157ae 2026-01-27 | fix: production mode is set with production key (not devel) [Joël Maizi]
+* fix: [half-orm-dev] production mode is set with production key (not devel) (1a157ae)
 
 # 0.17.3 (2026-27-01)
 
-* 3f66994 2026-01-27 | rename.Model.__production_mode to Model._production_mode. [Joël Maizi]
-* 3a92e4a 2026-01-27 | rename Model.__dbinfo to Model._dbinfo. [Joël Maizi]
-* 203ca12 2026-01-14 | build(deps-dev): bump jaraco.context from 5.3.0 to 6.1.0 (gite/main, gite/HEAD) [dependabot[bot]]
-* 4095cb8 2026-01-13 | build(deps-dev): bump virtualenv from 20.26.6 to 20.36.1 [dependabot[bot]]
-* 60b83f1 2026-01-08 | ci: add Python 3.14 [Joël Maizi]
+* rename.Model.__production_mode to Model._production_mode. (3f66994)
+* rename Model.__dbinfo to Model._dbinfo. (3a92e4a)
+* build(deps-dev): bump jaraco.context from 5.3.0 to 6.1.0 (203ca12)
+* build(deps-dev): bump virtualenv from 20.26.6 to 20.36.1 (4095cb8)
+* ci: add Python 3.14 (60b83f1)
 
 # 0.17.2 (2026-08-01)
 
