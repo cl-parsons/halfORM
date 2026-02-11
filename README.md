@@ -331,7 +331,7 @@ halfORM is actively maintained and used in production. Current focus:
 
 ## 📜 License
 
-halfORM is licensed under the [LGPL-3.0](LICENSE) license.
+halfORM is licensed under the [GPL-3.0](LICENSE) license.
 
 ---
 
